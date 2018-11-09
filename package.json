@@ -9,6 +9,7 @@
     "express": "^4.16.4",
     "file-loader": "^2.0.0",
     "ignore-styles": "^5.0.1",
+    "prettier": "^1.15.1",
     "react": "^16.6.1",
     "react-dom": "^16.6.1",
     "react-helmet": "^5.2.0",
