@@ -1,26 +1,21 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { hydrate } from 'react-dom';
+import { Provider } from 'react-redux';
 import Loadable from 'react-loadable';
 
-
-
 import App from './App';
+import configureStore from './store/configStore';
 
-// import registerServiceWorker from './registerServiceWorker';
-
-
+const store = configureStore(window.__REDUX_STATE__);
 
 const AppBundle = (
-  
-  <App />
-
+  <Provider store={store}>
+    <App />
+  </Provider>
 );
 
 window.onload = () => {
   Loadable.preloadReady().then(() => {
-    ReactDOM.hydrate(
-      AppBundle,
-      document.getElementById('root')
-    );
+    hydrate(AppBundle, document.getElementById('root'));
   });
 };

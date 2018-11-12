@@ -3,36 +3,20 @@ import Loadable from 'react-loadable';
 
 import './App.css';
 
-
 const AsyncComponent = Loadable({
-  loader: () => import('./testComponent.js'),
+  loader: () => import('./containers/TableOfStats'),
   loading: () => <div>loading...</div>,
-  modules: ['myNamedChunk'],
+  modules: ['myNamedChunk']
 });
 
-
-
 class App extends Component {
-  
-  
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src="./logo.svg" className="App-logo" alt="logo"/>
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <div className="App-intro">
-          <h2>Part 1: Async component</h2>
-          <AsyncComponent />
-          
-          <hr />
-        
-        
-        </div>
+      <div>
+        <AsyncComponent />
       </div>
     );
   }
 }
 
-export default App
+export default App;

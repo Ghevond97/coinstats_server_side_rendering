@@ -26,11 +26,12 @@ export default store => (req, res, next) => {
         </Provider>
       </Loadable.Capture>
     );
-
-    const helmet = Helmet.renderStatic();
+    const reduxState = JSON.stringify(store.getState());
 
     return res.send(
-      htmlData.replace('<div id="root"></div>', `<div id="root">${html}</div>`)
+      htmlData
+        .replace('<div id="root"></div>', `<div id="root">${html}</div>`)
+        .replace('__REDUX_STATE__={}', `__REDUX_STATE__=${reduxState}`)
     );
   });
 };
