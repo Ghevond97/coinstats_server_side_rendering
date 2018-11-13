@@ -1,2 +1,4 @@
 import { getStats } from './fetchStats';
-export { getStats };
+import { getLogo } from './coinLogo';
+
+export { getStats, getLogo };

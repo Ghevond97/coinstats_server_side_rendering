@@ -11,9 +11,11 @@ export const requestStatus = (state = true, action) => {
   }
 };
 export const stats = (state = [], action) => {
+  let z= [];
   switch (action.type) {
     case RECEIVE_STATS:
-      return action.payload;
+      z.push(action.payload)
+      return [...z]
     
     default:
       return state;

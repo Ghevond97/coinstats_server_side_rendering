@@ -1,5 +1,5 @@
 import express from 'express';
-import path, { resolve } from 'path';
+import { resolve } from 'path';
 
 import { getStats } from '../../src/actions';
 import serverRenderer from '../middleware/renderer';
@@ -13,8 +13,6 @@ const actionIndex = (req, res) => {
     serverRenderer(store)(req, res);
   });
 };
-
-router.use('^/$', actionIndex);
 
 router.use(
   express.static(resolve(__dirname, '..', '..', 'build'), { maxAge: '30d' })
