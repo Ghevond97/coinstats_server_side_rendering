@@ -3,6 +3,6 @@ export default {
     PORT: 3000
   },
   DB: {
-    HOST: 'mongodb://localhost:27017/testa'
+    HOST: 'mongodb://localhost:27017/test'
   }
 };

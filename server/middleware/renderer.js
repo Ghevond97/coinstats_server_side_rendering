@@ -1,4 +1,4 @@
-import  { readFile } from 'fs';
+import { readFile } from 'fs';
 import { resolve } from 'path';
 
 import React from 'react';
