@@ -1,25 +1,9 @@
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-
-import { getLogo } from '../../actions';
 
 import TableBody from '../../components/TableBody';
 
 const mapStateToProps = state => ({
-  stats: state.stats,
-  logo: state.logo
+  stats: state.stats
 });
 
-const mapDispatchToProps = dispatch => {
-  return bindActionCreators(
-    {
-      getLogo
-    },
-    dispatch
-  );
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(TableBody);
+export default connect(mapStateToProps)(TableBody);

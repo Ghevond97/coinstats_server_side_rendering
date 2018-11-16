@@ -3,8 +3,9 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 
 import Table from '../Table';
 import styled from 'styled-components';
+import { getStats } from '../../actions';
 
-const Divtyle = styled.div`
+const Divstyle = styled.div`
   display: flex;
   justify-content: center;
 `;
@@ -14,29 +15,36 @@ class TableOfStats extends Component {
     super(props);
     this.state = {
       start: 0,
-      items: 100,
+      limit: 100,
       hasMore: true
     };
 
     this.fetchMoreData = this.fetchMoreData.bind(this);
   }
 
+  static initialAction({ dispatch }) {
+    return [dispatch(getStats())];
+  }
+
   componentDidMount() {
-    this.props.getStats();
+    const { getStats } = this.props;
+
+    getStats();
   }
 
   fetchMoreData() {
+    const { limit, start } = this.state;
+    const { getStats } = this.props;
     setTimeout(() => {
       this.setState({
-        start: this.state.items,
-        items: this.state.items + 100
+        start: limit + 1,
+        items: limit + 100
       });
-      this.props.getStats({start: this.state.start, limit:this.props.items});
+      getStats({ start, limit });
     }, 1000);
   }
 
   render() {
-    console.log(this.props.stats)
     return (
       <InfiniteScroll
         dataLength={this.state.items}
@@ -45,9 +53,9 @@ class TableOfStats extends Component {
         loader={<h4>Loading...</h4>}
         scrollableTarget="scrollableDiv"
       >
-        <Divtyle>
+        <Divstyle>
           <Table />
-        </Divtyle>
+        </Divstyle>
       </InfiniteScroll>
     );
   }

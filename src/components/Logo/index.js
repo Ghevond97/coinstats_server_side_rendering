@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 
 import styled from 'styled-components';
 
-class Logo extends Component {
+const Image = styled.img`
+  width: 45%;
+`;
 
+class Logo extends Component {
   render() {
     const { logo, id } = this.props;
-    console.log(logo)
-    return (<image/>);
+    return logo.map(el => (id == el.id ? <Image src={el.logo} /> : ''));
   }
 }
 

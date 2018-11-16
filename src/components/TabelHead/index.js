@@ -8,10 +8,8 @@ const TH = styled.th`
 `;
 
 const TR = styled.tr`
-  &:nth-child(even) {
-    background-color: #f2f2f2;
-  }
-  overflow: scroll;
+  background-color: #424141;
+  overflow: hidden;
 `;
 
 class TableHead extends Component {
@@ -19,6 +17,7 @@ class TableHead extends Component {
     return (
       <TR>
         <TH>#</TH>
+        <TH />
         <TH>Name</TH>
         <TH>Market Cap</TH>
         <TH>Price</TH>
